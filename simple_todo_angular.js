@@ -33,7 +33,24 @@ if (Meteor.isClient) {
   var app = angular.module('meteorApp');
   app.controller('toDoListCtrl',['$scope','$meteor',function($scope,$meteor){
     $scope.tasks = $meteor.collection(Tasks);
+
+    $scope.addTask = function(newTask){
+       $scope.tasks.push({text:newTask,createdAt:new Date()});
+    }
+   
+
   }]);
+
+  app.controller('newTask',['$scope','$meteor',function($scope,$meteor){
+    $scope.tasks = $meteor.collection(Tasks);
+    $scope.addTask = function(newTask){
+       $scope.tasks.push({text:newTask,createdAt:new Date()});
+    }
+   
+    // $scope.tasks = $meteor.collection( function() {
+    //     return Tasks.find({}, { sort: { createdAt: -1 } })
+    // });
+  }])
 
 
 }

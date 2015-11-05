@@ -1,9 +1,21 @@
 <div class="container">
-  <header>
-    <h1>Todo List</h1>
-  </header>
- 
-  <ul>
-    <li ng-repeat="task in tasks">{{task.text}}</li>
-  </ul>
+	  <header>
+	    <h1>Todo List</h1>
+	  </header>
+	  <!-- <div ng-controller="newTask"> -->
+	  <form class="new-task" ng-submit="addTask(newTask); newTask='';">
+	  	 <input ng-model="newTask" type="text" name="text" placehold="type to add new task" />
+	  </form> 
+	  <!-- </div> -->
+		<hr>
+
+	<!-- <div ng-controller="toDoListCtrl" > -->
+	  <ul>
+	    <li ng-repeat="task in tasks">
+	    	<button class="delete" ng-click="tasks.remove(task)">&times;</button>
+     		<input type="checkbox" ng-model="task.checked" class="toggle-checked" />
+      		<span class="text">{{task.text}}</span>
+	    </li>
+	  </ul>
+	<!-- </div> -->
 </div>
